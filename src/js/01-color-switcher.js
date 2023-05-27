@@ -1,25 +1,31 @@
-const bodyBtn = {
-startBtn: document.querySelector('button[data-start]'),
-  stopBtn: document.querySelector('button[data-stop]'),
+const startBtnEl = document.querySelector('[data-start]');
+const stopBtnEl = document.querySelector('[data-stop]');
+
+// інтервал
+let intervalId = null;
+
+// слухачі
+startBtnEl.addEventListener('click', onClickStartBtn);
+stopBtnEl.addEventListener('click', onClickStoptBtn);
+
+//рандомний колір
+function getRandomHexColor() {
+  return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
 }
 
-function getRandomHexColor() {
-    return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
-  }
+//клік на кнопку старт
+function onClickStartBtn() {
+  intervalId = setInterval(() => {
+    const rendomHexColor = getRandomHexColor();
 
+    document.querySelector('body').style.backgroundColor = rendomHexColor;
+  }, 1000);
 
-  function changeColor(color) {
-    document.body.style.backgroundColor = color;
-  }
+  startBtnEl.disabled = true;
+}
 
-  const isSuccess = true;
-
-const promise = new Promise((resolve, reject) => {
-  setTimeout(() => {
-    if (isSuccess) {
-      resolve("Success! Value passed to resolve function");
-    } else {
-      reject("Error! Error passed to reject function");
-    }
-  }, 2000);
-});
+//клік на кнопку стоп
+function onClickStoptBtn() {
+  clearInterval(intervalId);
+  startBtnEl.disabled = false;
+}
