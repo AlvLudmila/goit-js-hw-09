@@ -1,2 +1,0 @@
-var bodyBtn={startBtn:document.querySelector("button[data-start]"),stopBtn:document.querySelector("button[data-stop]")};function getRandomHexColor(){return"#".concat(Math.floor(16777215*Math.random()).toString(16))}function changeColor(t){document.body.style.backgroundColor=t}var isSuccess=!0,promise=new Promise((function(t,o){setTimeout((function(){isSuccess?t("Success! Value passed to resolve function"):o("Error! Error passed to reject function")}),2e3)}));
-//# sourceMappingURL=01-color-switcher.52e91ef9.js.map
