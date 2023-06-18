@@ -16,9 +16,8 @@ function onCreatePromises(evt) {
   let { amount, step, delay } = dataParams;
 
   for (let i = 1; i <= amount; i += 1) {
-    delay += step;
     createPromise(i, delay).then(onSuccess).catch(onError);
-
+    delay += step;
     refs.form.reset();
   }
 }
@@ -34,7 +33,7 @@ function createPromise(position, delay) {
       }
     }, delay);
   });
-};
+}
 
 function onError({ position, delay }) {
   Notify.failure(`❌ Rejected promise ${position} in ${delay}ms`);
@@ -42,4 +41,4 @@ function onError({ position, delay }) {
 
 function onSuccess({ position, delay }) {
   Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`);
-};
+}
